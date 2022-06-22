@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+{% load static %} 
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link href='{% static "core/css/bootstrap.min.css" %}' type="text/css" rel="stylesheet" />
+    <link href='{% static "core/css/estilos.css"  %}' type="text/css" rel="stylesheet" />
+  </head>
+
+  <body style="background-image: url('{% static 'core/img/fondo2.jpg' %}'); background-repeat: no-repeat; background-size:auto;">
+    <div>
+      <div class="container-fluid">
+        <div id="carousel1" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carousel1" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel1" data-slide-to="1"></li>
+            <li data-target="#carousel1" data-slide-to="2"></li>
+          </ol>
+          <!-- diapositivas -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <a href="#"
+                ><img class="d-block w-100" src='{% static "core/img/foto1.jpg" %} ' alt="" />
+              </a>
+              <div class="carousel-caption">
+                <h3>Variedad de Herramientas</h3>
+                <p>Contamos con todo tipo de herramientas para tu jardin</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src='{% static "core/img/foto2.jpg" %} ' alt="" />
+              <div class="carousel-caption">
+                <h3>Accerosios</h3>
+                <p>Accerosios para tu huerta</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src='{% static "core/img/foto3.jpg" %} ' alt="" />
+              <div class="carousel-caption">
+                <h3>Huerto en casa</h3>
+                <p>Tenemos semillas y herramientas para empezar tu Huerto</p>
+              </div>
+            </div>
+          </div>
+          <!-- botones de desplazamiento a izquierda y derecha -->
+          <a class="carousel-control-prev" href="#carousel1" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel1" data-slide="next">
+            <span class="sr-only">Siguiente</span>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h1
+        class="texto"
+        style="
+          text-align: center;
+          padding-top: 30px;
+          padding-bottom: 30px;
+          color: seagreen;
+        "
+      >
+        Jardinería, diseño y decoración
+      </h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-md">
+            <div class="card text-center">
+              <div class="card-body texto">
+                <img src='{% static "core/img/imagen.jpg" %} ' alt="" height="350px" />
+                <h3 class="card-title">Como cuidar tus plantas</h3>
+                <p class="card-text">
+                  Para mantener tus plantas de interior en perfectas condiciones
+                  no olvides: luminosidad, riego y temperatura. El truco es
+                  mantener estos tres puntos muy cuidados y tus plantas serán
+                  perfectas! Te hablaremos de los cuidados básicos de tu planta
+                  y los mejores tips para poder cuidarlas.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md">
+            <div class="card text-center">
+              <div class="card-body texto">
+                <img src='{% static "core/img/imagen2.jpg" %} ' alt="" height="300px" />
+                <h3 class="card-title">
+                  Cómo enfrentar plagas y enfermedades más comunes huertos
+                  domésticos
+                </h3>
+                <p class="card-text">
+                  Para eliminar el pulgón de una forma casera realizaremos una
+                  disolución de agua y jabón y lo rociaremos sobre los insectos.
+                  Solo se recomienda fumigar con insecticida en caso de que la
+                  plaga se haya extendido de manera incontrolable.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card text-center">
+              <div class="card-body texto">
+                <img src='{% static "core/img/imagen3.jpg" %} ' alt="" height="300px" />
+                <h3 class="card-title">Huertos en casa o departamento</h3>
+                <p class="card-text">
+                  Durante esta pandemia miles de personas han comenzado con sus
+                  propios huertos como terapia y hobby, sin importar si se tiene
+                  jardín o se vive en un edificio. Sin embargo, ahora que
+                  comenzó el invierno, es importante tener en cuenta cuáles son
+                  las plantas de la temporada y los cuidados esenciales que
+                  necesitan.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card text-center">
+              <div class="card-body texto">
+                <img src='{% static "core/img/imagen4.jpg" %} ' alt="" height="300px" />
+                <h3 class="card-title">
+                  Maneras de hacer un jardín en tu casa
+                </h3>
+                <p class="card-text">
+                  En cada hogar debe haber un auténtico jardín, no tan grande
+                  como Versalles, pero aunque sea uno pequeño, porque es el
+                  mejor lugar para descansar y relajarse. Para ello solo
+                  necesitas tirar la basura de tu balcón y aprender algunas
+                  bases de jardinería. Te invitamos a echar un vistazo a algunas
+                  ideas que harán incluso del balcón más pequeño un lugar
+                  excelente para descansar.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
