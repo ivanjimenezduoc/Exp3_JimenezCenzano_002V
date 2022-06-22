@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load static %} 
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link href='{% static "core/css/bootstrap.min.css" %}' type="text/css" rel="stylesheet" />
+    <link href='{% static "core/css/estilos.css"  %}' type="text/css" rel="stylesheet" />
+  </head>
+
+  <body
+    style="
+      background-image: url('{% static 'core/img/fondo2.jpg' %}');
+      background-repeat: no-repeat;
+      background-size: auto;
+    "
+  >
+    <h1 style="text-align: center; padding-top: 30px">Identifique su planta</h1>
+    <form style="text-align: center; padding-top: 50px; padding-bottom: 50px">
+      <input type="file" multiple />
+      <button type="button">OK</button>
+    </form>
+    <form>
+      <div class="container-fluid">
+        <div>
+          <div
+            class="jumbotron texto"
+            style="background-color: lightgray; margin: 10px"
+          >
+            <div style="margin: 30px">
+              <h3 style="padding-top: 30px">Datos encontrados</h3>
+              <p>Nombre Comun: <span id="nom_com"></span></p>
+              <p>Nombre cientifico: <span id="nom_cien"></span></p>
+              <p>Familia: <span id="familia"></span></p>
+              <p style="padding-bottom: 30px">
+                Descripcion: <span id="descrip"></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <script type="text/javascript">
+      document.querySelector("button").onclick = function sendIdentification() {
+        const files = [...document.querySelector("input[type=file]").files];
+        const promises = files.map((file) => {
+          return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+              const res = event.target.result;
+              console.log(res);
+              resolve(res);
+            };
+            reader.readAsDataURL(file);
+          });
+        });
+
+        Promise.all(promises).then((base64files) => {
+          console.log(base64files);
+
+          const data = {
+            api_key: "bvSvP5HQ1D37oHFC3Ktn5BG3K0LWYO5D6t1SPh6v6ClbHmKB8E",
+            images: base64files,
+            // modifiers docs: https://github.com/flowerchecker/Plant-id-API/wiki/Modifiers
+            modifiers: ["crops_fast", "similar_images"],
+            plant_language: "es",
+            // plant details docs: https://github.com/flowerchecker/Plant-id-API/wiki/Plant-details
+            plant_details: [
+              "common_names",
+              "url",
+              "name_authority",
+              "wiki_description",
+              "taxonomy",
+              "synonyms",
+            ],
+          };
+
+          fetch("https://api.plant.id/v2/identify", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              //console.log('Success:', data);
+              console.log(
+                "prueba:",
+                data.suggestions[0].plant_details.scientific_name
+              );
+              document.getElementById("nom_cien").innerHTML =
+                data.suggestions[0].plant_details.scientific_name;
+              document.getElementById("nom_com").innerHTML =
+                data.suggestions[0].plant_details.common_names;
+              document.getElementById("familia").innerHTML =
+                data.suggestions[0].plant_details.taxonomy.family;
+              document.getElementById("descrip").innerHTML =
+                data.suggestions[0].plant_details.wiki_description.value;
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+      };
+    </script>
+  </body>
+</html>
